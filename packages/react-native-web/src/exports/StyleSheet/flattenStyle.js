@@ -15,6 +15,11 @@ function getStyle(style) {
   if (typeof style === 'number') {
     return ReactNativePropRegistry.getByID(style);
   }
+  for (const k in style) {
+    if (typeof k === 'number' || !isNaN(+k)) {
+      delete style[k];
+    }
+  }
   return style;
 }
 
